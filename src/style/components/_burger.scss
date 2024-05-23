@@ -1,0 +1,43 @@
+.burger {
+    @include transition(transform);
+    @include flex-col($justify: space-between);
+    @include size(22px, 14px);
+
+    z-index: 2;
+
+    @include hover() {
+        cursor: pointer;
+
+        .burger__line:nth-child(2) {
+            align-self: flex-end;
+            width: 50%;
+        }
+    }
+
+    &__line {
+        @include transition(width);
+        @include size(100%, 2px);
+
+        background-color: $font-color;
+    }
+
+    &--active {
+        @include hover() {
+            opacity: 0.7;
+        }
+
+        .burger__line {
+            &:nth-child(1) {
+                transform: rotate(45deg) translate(2px, 4px);
+            }
+
+            &:nth-child(3) {
+                transform: rotate(-45deg) translate(4px, -6px);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+        }
+    }
+}

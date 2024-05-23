@@ -1,0 +1,33 @@
+@mixin font($size: 14px, $height: $size, $weight: null) {
+  @include font-size($size);
+  @include font-height($height);
+  @include font-weight($weight);
+}
+
+@mixin font-size($size: 14px) {
+  @if $size != null {
+    font-size: $size;
+  }
+}
+
+@mixin font-height($height: 14px) {
+  @if $height != null {
+    line-height: $height;
+  }
+}
+
+@mixin font-weight($weight: null) {
+  @if $weight != null {
+    font-weight: $weight;
+  }
+}
+
+@mixin text-align($horizontal: null, $vertical: null) {
+  @if $horizontal != null {
+    text-align: $horizontal;
+  }
+
+  @if $vertical != null {
+    vertical-align: $vertical;
+  }
+}

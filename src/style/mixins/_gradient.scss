@@ -1,0 +1,7 @@
+@mixin bg-gradient() {
+    background: linear-gradient(
+        180deg,
+        #fff 63.64%,
+        rgba(255, 255, 255, 0) 95.45%
+    );
+}

@@ -1,0 +1,40 @@
+$btn-border: #9dadf2;
+$main-btn-bg: #478bf9;
+$btn-hover: #012825;
+
+.btn-main {
+    @include flex-row(null, center, center);
+    @include transition(background-color border);
+
+    padding: 14px;
+
+    border: 2px solid transparent;
+    border-radius: 24px;
+    background-color: $main-btn-bg;
+    line-height: 125%;
+
+    @include hover() {
+        cursor: pointer;
+        background-color: $btn-hover;
+        border: 2px solid $btn-border;
+    }
+}
+
+.btn-side {
+    @include flex-row(null, center, center);
+    @include transition(background-color);
+
+    padding: 14px;
+
+    border: 2px solid $btn-border;
+    border-radius: 24px;
+
+    background-color: $bg-button;
+    line-height: 125%;
+    text-transform: uppercase;
+
+    @include hover() {
+        cursor: pointer;
+        background-color: $btn-hover;
+    }
+}

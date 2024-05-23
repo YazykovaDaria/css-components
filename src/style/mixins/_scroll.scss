@@ -1,0 +1,23 @@
+@mixin custom-scroll-y {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    // scrollbar-color: linear-gradient(
+    //     100% 215.42% at 0% 0%,
+    //     #5b483a 0%,
+    //     #262425 100%
+    // );
+
+    // &::-webkit-scrollbar {
+    //     @include size(2px);
+    // }
+
+    // &::-webkit-scrollbar-track {
+    //     background-color: $bg-card;
+    // }
+
+    // &::-webkit-scrollbar-thumb {
+    //     @include bg-gradient();
+
+    //     border-radius: 1px;
+    // }
+}

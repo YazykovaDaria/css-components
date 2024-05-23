@@ -1,0 +1,53 @@
+@mixin flex-col($gap: null, $align: null, $justify: null) {
+  display: flex;
+  flex-direction: column;
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+@mixin flex-row($gap: null, $align: null, $justify: null) {
+  display: flex;
+  flex-direction: row;
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+@mixin flex-inline($gap: null, $direction: null, $align: null, $justify: null) {
+  display: inline-flex;
+
+  @if $direction != null {
+    flex-direction: $direction;
+  }
+
+  @if $justify != null {
+    justify-content: $justify;
+  }
+
+  @if $align != null {
+    align-items: $align;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
