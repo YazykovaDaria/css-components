@@ -32,7 +32,6 @@
     "image-webpack-loader": "^8.1.0",
     "postcss-loader": "^8.1.1",
     "prettier": "^2.8.7",
-    "pug": "^3.0.2",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
