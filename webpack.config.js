@@ -1,23 +1,10 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-param-reassign */
-/* eslint-disable global-require */
 const path = require('path');
-const globule = require('globule');
 const HtmlBundlerPlugin = require('html-bundler-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
-
-const pathToPages = path.join(__dirname, 'src/pages');
-
-const pages = globule.find(path.join(pathToPages, '/**/*.html')).reduce((entry, file) => {
-  const name = path.relative(pathToPages, file).replace(/\.html$/, '');
-  entry[name] = file;
-  return entry;
-}, {});
 
 module.exports = {
   mode,
@@ -52,7 +39,7 @@ module.exports = {
 
   plugins: [
     new HtmlBundlerPlugin({
-      entry: pages,
+      entry: path.join(__dirname, 'src/pages'),
       js: {
         filename: 'js/[name].[contenthash:8].js',
       },
