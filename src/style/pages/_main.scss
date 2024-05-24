@@ -1,0 +1,19 @@
+.main-page {
+    padding: 40px;
+
+    .links {
+        @include flex-col(20px);
+    }
+
+    .link {
+        @include font(20px, 1.2, 400);
+        @include transition(color);
+
+        font-family: "Times New Roman", Times, serif;
+        color: rgb(42, 38, 38);
+
+        @include hover() {
+            color: rgb(29, 114, 31);
+        }
+    }
+}
