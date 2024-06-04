@@ -7,10 +7,6 @@ body {
     height: 100%;
 }
 
-.body {
-    @include flex-col();
-}
-
 .main {
     flex-grow: 1;
 }

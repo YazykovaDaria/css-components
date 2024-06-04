@@ -1,0 +1,112 @@
+//common
+.marquee-page {
+    padding-block: 40px;
+}
+
+.marquee__info {
+    @include flex-col(10px);
+
+    font-size: 20px;
+    padding: 0 40px 20px 40px;
+
+    a {
+        color: green;
+    }
+}
+
+.marquee__horisontal {
+    @include flex-col(40px);
+
+    margin-bottom: 40px;
+}
+
+.marquee__vertical {
+    @include flex-row(40px);
+
+    height: 700px;
+    margin-left: 40px;
+}
+
+//component
+$gap: 20px;
+
+.marquee {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: $gap;
+
+    border: 2px dashed lightgray;
+
+    &--vertical {
+        flex-direction: column;
+
+        //add gradiend for end animationed element
+        mask-image: linear-gradient(
+            hsl(0 0% 0% / 0),
+            hsl(0 0% 0% / 1) 20%,
+            hsl(0 0% 0% / 1) 80%,
+            hsl(0 0% 0% / 0)
+        );
+
+        .marquee__content {
+            flex-direction: column;
+            animation-name: scrollY;
+        }
+    }
+
+    &--reverse .marquee__content {
+        animation-direction: reverse;
+    }
+}
+
+.marquee__content {
+    //important for animation
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: $gap;
+    min-width: 100%;
+    animation: scrollX 10s linear infinite;
+
+    li {
+        flex: 0 0 auto;
+        color: white;
+        background: dodgerblue;
+        margin: 2px;
+        padding: 1rem 2rem;
+        border-radius: 0.25rem;
+        text-align: center;
+    }
+}
+
+@keyframes scrollX {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - $gap));
+    }
+}
+
+@keyframes scrollY {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(calc(-100% - $gap));
+    }
+}
+
+/* Pause animation when reduced-motion is set */
+@media (prefers-reduced-motion: reduce) {
+    .marquee__content {
+        animation-play-state: paused !important;
+    }
+}
+
+/* Pause on hover */
+.marquee--hover-pause:hover .marquee__content {
+    animation-play-state: paused;
+}
