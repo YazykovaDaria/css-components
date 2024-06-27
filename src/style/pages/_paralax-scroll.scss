@@ -1,0 +1,142 @@
+.paralax-scroll-page {
+    .layer__item {
+        @include flex-col(null, center, center);
+
+        height: 100vh;
+        width: 100vw;
+
+        position: fixed;
+        top: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--first {
+            //don't work path to img from style tag
+            background-image: url("../../assets/images/paralax/layer1.jpg");
+            // scale: 2;
+            animation-name: layer--first;
+        }
+
+        &--second {
+            background-image: url("../../assets/images/paralax/layer2.png");
+            animation-name: layer--second;
+        }
+
+        @keyframes layer--first {
+            to {
+                scale: 1.8;
+            }
+        }
+
+        @keyframes layer--second {
+            to {
+                scale: 1.6;
+            }
+        }
+    }
+
+    //for to browser who don't support scroll animation. Js polyfill https://github.com/flackr/scroll-timeline
+    @supports (animation-timeline: scroll()) {
+        .layer {
+            height: 200vh;
+        }
+
+        .layer__item {
+            //for animation to scroll
+            animation-timeline: scroll();
+            animation-fill-mode: both;
+            animation-timing-function: linear;
+            animation-range: 0 200vh;
+        }
+    }
+
+    .layer__text {
+        position: relative;
+        z-index: 1;
+        color: white;
+        text-align: center;
+        font-weight: 600;
+
+        opacity: 0;
+
+        animation-name: text;
+        animation-timeline: scroll();
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        animation-range: 50vh 150vh;
+
+        @keyframes text {
+            to {
+                opacity: 1;
+            }
+        }
+    }
+
+    .title {
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+
+    .text {
+        font-size: 24px;
+    }
+
+    .arrow-box {
+        border: 1px solid white;
+        background: rgb(30, 30, 30, 0.7);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 30px;
+        z-index: 1;
+    }
+
+    .arrow {
+        position: relative;
+        margin: 20px auto;
+        width: 10px;
+        height: 10px;
+
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            border-bottom: 2px solid white;
+            border-left: 2px solid white;
+            width: 100%;
+            height: 100%;
+
+            animation: arrow 3s linear infinite;
+        }
+
+        &::after {
+            animation: arrow 3s linear infinite -1.5s;
+        }
+
+        @keyframes arrow {
+            0% {
+                opacity: 0;
+                transform: translate(0, -10px) rotate(-45deg);
+            }
+            10% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(-45deg);
+            }
+            90% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(0, 10px) rotate(-45deg);
+            }
+        }
+    }
+}
